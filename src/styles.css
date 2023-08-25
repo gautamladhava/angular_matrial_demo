@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.container{
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 20px ;
+}
+.header{
+    padding: 20px 0;
+    background-color: aliceblue;
+}
+h2{
+    text-align: center;
+    margin: 0;
+}
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+a,span,i,img{
+    display: inline-block;
+}

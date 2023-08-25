@@ -1,0 +1,97 @@
+<div class="container">
+    <mat-form-field>
+        <mat-label>Angular forms</mat-label>
+        <input matInput [matDatepicker]="picker1" [formControl]="date">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Angular forms (w/ deserialization)</mat-label>
+        <input matInput [matDatepicker]="picker2"
+               [formControl]="serializedDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Value binding</mat-label>
+        <input matInput [matDatepicker]="picker3" [value]="date.value">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+      
+
+      <p>
+        <mat-form-field>
+          <mat-label>Input disabled</mat-label>
+          <input matInput [matDatepicker]="dp1" disabled>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="dp1"></mat-datepicker-toggle>
+          <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>Completely disabled</mat-label>
+          <input matInput [matDatepicker]="dp1" disabled>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="dp1"></mat-datepicker-toggle>
+          <mat-datepicker #dp1></mat-datepicker>
+        </mat-form-field>
+      </p>
+      
+
+      <div class="paginator">
+      <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+</div>
+<div class="demo-options">
+    <mat-form-field>
+      <mat-label>Length</mat-label>
+      <input matInput placeholder="Length" type="number" [(ngModel)]="length">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Page Size</mat-label>
+      <input matInput placeholder="Page Size" type="number" [(ngModel)]="pageSize">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Page Index</mat-label>
+      <input matInput placeholder="Page Index" type="number" [(ngModel)]="pageIndex">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Page Size Options</mat-label>
+      <input matInput [ngModel]="pageSizeOptions" (ngModelChange)="setPageSizeOptions($event)"
+             [ngModelOptions]="{updateOn: 'blur'}" placeholder="Ex. 10,25,50">
+    </mat-form-field>
+  
+  </div>
+  
+  <mat-paginator #paginator
+                 class="demo-paginator"
+                 (page)="handlePageEvent($event)"
+                 [length]="length"
+                 [pageSize]="pageSize"
+                 [disabled]="disabled"
+                 [showFirstLastButtons]="showFirstLastButtons"
+                 [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+                 [hidePageSize]="hidePageSize"
+                 [pageIndex]="pageIndex"
+                 aria-label="Select page">
+  </mat-paginator>
+  
+  <div class="demo-data">
+    <div> Output event: {{(pageEvent | json) || 'No events dispatched yet'}} </div>
+    <div> getNumberOfPages: {{paginator.getNumberOfPages()}} </div>
+  </div>
+  
+</div>
